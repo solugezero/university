@@ -1,11 +1,13 @@
 <template>
     <div class="ui-input_wrapper">
         <div class="ui-input_wrapper__title">{{props.title}}</div>
-        <input v-model="state" :placeholder="props?.placeholder" type="text" class="ui-input">
+        <input v-if="!props.textarea" :style="getStyle" v-model="state" :placeholder="props?.placeholder" type="text" class="ui-input">
+        <textarea v-else class="ui-input" :style="getStyle" v-model="state"></textarea>
     </div>
 </template>
 
 <script setup>
+let state = ref('')
 const emit = defineEmits(["update:modelValue"])
 const props = defineProps({
     placeholder: {
@@ -14,9 +16,23 @@ const props = defineProps({
     title: {
         type: String,
         default: 'Title of input'
+    },
+    height: {
+        type: String,
+        default: '50px'
+    },
+    textarea: {
+        type: Boolean,
     }
 })
-let state = ref('')
+
+const getStyle = computed(() => {
+    const {height} = props;
+    return {
+        'height': height
+    }
+})
+
 watch(
   () => state.value,
   (newValue, oldValue) => {
@@ -31,10 +47,11 @@ watch(
     background-color: #f5f5f5;
     border: none;
     width: 100%;
-    height: 50px;
     border-radius: 12px;
     color: #000;
-    padding: 0px 12px;
+    padding: 2px 12px;
+    align-items: flex-start;
+    display: flex;
 
     &_wrapper {
         display: flex;

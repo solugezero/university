@@ -12,7 +12,9 @@
             <div class="create-form_inner_content">
                 <ui-input v-model="stateInput.author" title="ФИО"></ui-input>
                 <ui-input v-model="stateInput.group" title="Группа"></ui-input>
-                <ui-input v-model="stateInput.type" title="Вид работы" placeholder="Презентация/курс/реферат/лаб. работа"></ui-input>
+                <ui-input textarea v-model="stateInput.description" title="Описание" height="300px"></ui-input>
+                <!-- <ui-input v-model="stateInput.type" title="Вид работы" placeholder="Презентация/курс/реферат/лаб. работа"></ui-input> -->
+                <ui-select v-model="stateInput.type" style="max-width: 50%;"></ui-select>
             </div>
             <div class="create-form_inner_bottom">
                 <FileUpload name="demo[]" :customUpload="true" @uploader="myUploader" />
@@ -29,7 +31,7 @@
 import {
     onClickOutside
 } from '@vueuse/core'
-let isActive = ref(true)
+let isActive = ref(false)
 let formInner = ref(null)
 let stateInput = ref({})
 const toggleActive = () => {
@@ -42,6 +44,7 @@ const myUploader = (event) => {
 }
 const handleSend = () => {
     // send to backend
+    console.log(stateInput.value)
     stateInput.value = {}
 }
 </script>
@@ -58,17 +61,23 @@ const handleSend = () => {
     right: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.242);
+    background: rgba(85, 85, 85, 0.242);
 
     &_inner {
-        border-radius: 12px;
+        // border-radius: 12px;
         padding: 30px;
         display: flex;
         width: 80%;
         height: 80%;
-        background-color: #adb9eb;
+        background: rgba(182, 182, 182, 0.452);
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 10px );
+        -webkit-backdrop-filter: blur( 3px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
         flex-direction: column;
         gap: 30px;
+        overflow: auto;
 
         &_content {
             display: flex;
@@ -103,6 +112,7 @@ const handleSend = () => {
             height: auto;
             flex-direction: row;
             justify-content: space-between;
+            align-items: flex-end;
         }
     }
 }
