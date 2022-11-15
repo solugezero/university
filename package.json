@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "3.0.0-rc.13"
+  },
+  "dependencies": {
+    "@vueuse/core": "^9.5.0",
+    "sass": "^1.56.1",
+    "scss": "^0.2.4",
+    "scss-loader": "^0.0.1"
+  }
+}
