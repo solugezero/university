@@ -4,7 +4,7 @@
         <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" class="header-wrapper__logo"></NuxtLink>
         <div class="header-wrapper_buttons">
             <NuxtLink to="/referats"><ui-button>Рефераты</ui-button></NuxtLink>
-            <NuxtLink to="/lab"><ui-button>Лабараторки</ui-button></NuxtLink>
+            <NuxtLink to="/lab"><ui-button>Лабораторные работы</ui-button></NuxtLink>
             <NuxtLink to="/presentation"><ui-button>Презентации и курсы</ui-button></NuxtLink>
         </div>
     </div>
