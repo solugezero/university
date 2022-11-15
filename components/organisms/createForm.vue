@@ -10,13 +10,13 @@
                 <div class="create-form_inner_top__close-btn" @click="toggleActive">X</div>
             </div>
             <div class="create-form_inner_content">
-                <ui-input title="ФИО"></ui-input>
-                <ui-input title="Группа"></ui-input>
-                <ui-input title="Вид работы" placeholder="Презентация/курс/реферат/лаб. работа"></ui-input>
+                <ui-input v-model="stateInput.author" title="ФИО"></ui-input>
+                <ui-input v-model="stateInput.group" title="Группа"></ui-input>
+                <ui-input v-model="stateInput.type" title="Вид работы" placeholder="Презентация/курс/реферат/лаб. работа"></ui-input>
             </div>
             <div class="create-form_inner_bottom">
-                <input type="file" class="create-form_inner_bottom__input-file">
-                <ui-button>Добавить</ui-button>
+                <FileUpload name="demo[]" :customUpload="true" @uploader="myUploader" />
+                <ui-button @click="handleSend">Добавить</ui-button>
             </div>
         </div>
     </div>
@@ -26,17 +26,27 @@
 </template>
 
 <script setup>
-import { onClickOutside } from '@vueuse/core'
+import {
+    onClickOutside
+} from '@vueuse/core'
 let isActive = ref(true)
 let formInner = ref(null)
+let stateInput = ref({})
 const toggleActive = () => {
     isActive.value = !isActive.value
 }
-onClickOutside(formInner, (event) => isActive.value = false)
+onClickOutside(formInner, () => isActive.value = false)
+
+const myUploader = (event) => {
+    stateInput.value['uploads'] = event
+}
+const handleSend = () => {
+    // send to backend
+    stateInput.value = {}
+}
 </script>
 
 <style lang="scss" scoped>
-
 .create-form {
     position: fixed;
     display: flex;
@@ -73,6 +83,11 @@ onClickOutside(formInner, (event) => isActive.value = false)
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+
+            &__title {
+                font-size: 20px;
+                font-weight: 700;
+            }
 
             &__close-btn {
                 cursor: pointer;

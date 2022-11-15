@@ -22,9 +22,11 @@
     text-decoration: none;
     user-select: none;
     color: #000;
+    cursor: pointer;
+    max-height: 30px;
 
     &:hover {
-        background-color: #167bd9;
+        background-color: #d6d6d6;
     }
 }
 </style>

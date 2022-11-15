@@ -8,11 +8,16 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.13"
+    "deepmerge": "^4.2.2",
+    "node-sass": "^7.0.3",
+    "nuxt": "3.0.0-rc.13",
+    "sass": "~1.32",
+    "sass-loader": "^13.2.0"
   },
   "dependencies": {
     "@vueuse/core": "^9.5.0",
-    "sass": "^1.56.1",
+    "primeicons": "^6.0.1",
+    "primevue": "^3.18.1",
     "scss": "^0.2.4",
     "scss-loader": "^0.0.1"
   }

@@ -1,8 +1,14 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    css: ["@/assets/scss/main.scss"],
+    css: ['@/assets/scss/main.scss',
+          'primevue/resources/themes/saga-blue/theme.css',
+          'primevue/resources/primevue.css',
+          'primeicons/primeicons.css'
+],
     components: {
         global: true,
         dirs: ['@/ui-components', '@/components']
     },
+    build: {
+		transpile: ['primevue']
+	}
 })

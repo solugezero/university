@@ -1,11 +1,12 @@
 <template>
     <div class="ui-input_wrapper">
         <div class="ui-input_wrapper__title">{{props.title}}</div>
-        <input :placeholder="props?.placeholder" type="text" class="ui-input">
+        <input v-model="state" :placeholder="props?.placeholder" type="text" class="ui-input">
     </div>
 </template>
 
 <script setup>
+const emit = defineEmits(["update:modelValue"])
 const props = defineProps({
     placeholder: {
         type: String
@@ -15,6 +16,14 @@ const props = defineProps({
         default: 'Title of input'
     }
 })
+let state = ref('')
+watch(
+  () => state.value,
+  (newValue, oldValue) => {
+    emit("update:modelValue", state.value)
+  },
+  { deep: true }
+)
 </script>
 
 <style scoped lang="scss">
