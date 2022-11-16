@@ -1,7 +1,7 @@
 <template>
   <div class="referats">
     <div class="content-box">
-      <OrganismsCreateForm>
+      <OrganismsCreateForm @add="(el) => handleForm(el)">
         <template v-slot:activeButton>
           <ui-button>Добавить работу</ui-button>
         </template>
@@ -18,81 +18,12 @@
 
 <script setup>
 let data = ref({
-  referats: [
-    {
-      title: "Лабораторная работа №1",
-      date: "15.11.2022 21:07",
-      author: "Романов Данила Юрьевич",
-      course: "1",
-      group: "15.27Д-ПИ06/22б",
-      subject: "Информационные системы и технологии",
-      theme: "Установка программного средства QGIS",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet diam at nulla lobortis pulvinar. Donec porta, sem quis aliquet pretium, neque ligula fringilla magna, non mattis massa orci nec nulla. Ut aliquet porta nunc ac accumsan. Suspendisse potenti. Nullam a laoreet felis. Cras vel egestas purus, sed hendrerit massa. Sed mollis velit ac sem lacinia, nec tempus massa mattis. Sed euismod est ac nulla ultricies, in auctor eros pretium. Nullam mattis vel elit eget dictum. Integer venenatis eget purus sed luctus. Sed non turpis elit. Pellentesque sit amet lectus hendrerit, ullamcorper eros ac, fermentum leo.",
-      file: { fileName: "lab1.docx", url: "" },
-    },
-    {
-      title: "Лабораторная работа №1",
-      date: "15.11.2022 21:07",
-      author: "Романов Данила Юрьевич",
-      course: "1",
-      group: "15.27Д-ПИ06/22б",
-      subject: "Информационные системы и технологии",
-      theme: "Установка программного средства QGIS",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet diam at nulla lobortis pulvinar. Donec porta, sem quis aliquet pretium, neque ligula fringilla magna, non mattis massa orci nec nulla. Ut aliquet porta nunc ac accumsan. Suspendisse potenti. Nullam a laoreet felis. Cras vel egestas purus, sed hendrerit massa. Sed mollis velit ac sem lacinia, nec tempus massa mattis. Sed euismod est ac nulla ultricies, in auctor eros pretium. Nullam mattis vel elit eget dictum. Integer venenatis eget purus sed luctus. Sed non turpis elit. Pellentesque sit amet lectus hendrerit, ullamcorper eros ac, fermentum leo.",
-      file: { fileName: "lab1.docx", url: "" },
-    },
-    {
-      title: "Лабораторная работа №1",
-      date: "15.11.2022 21:07",
-      author: "Романов Данила Юрьевич",
-      course: "1",
-      group: "15.27Д-ПИ06/22б",
-      subject: "Информационные системы и технологии",
-      theme: "Установка программного средства QGIS",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet diam at nulla lobortis pulvinar. Donec porta, sem quis aliquet pretium, neque ligula fringilla magna, non mattis massa orci nec nulla. Ut aliquet porta nunc ac accumsan. Suspendisse potenti. Nullam a laoreet felis. Cras vel egestas purus, sed hendrerit massa. Sed mollis velit ac sem lacinia, nec tempus massa mattis. Sed euismod est ac nulla ultricies, in auctor eros pretium. Nullam mattis vel elit eget dictum. Integer venenatis eget purus sed luctus. Sed non turpis elit. Pellentesque sit amet lectus hendrerit, ullamcorper eros ac, fermentum leo.",
-      file: { fileName: "lab1.docx", url: "" },
-    },
-    {
-      title: "Лабораторная работа №1",
-      date: "15.11.2022 21:07",
-      author: "Романов Данила Юрьевич",
-      course: "1",
-      group: "15.27Д-ПИ06/22б",
-      subject: "Информационные системы и технологии",
-      theme: "Установка программного средства QGIS",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet diam at nulla lobortis pulvinar. Donec porta, sem quis aliquet pretium, neque ligula fringilla magna, non mattis massa orci nec nulla. Ut aliquet porta nunc ac accumsan. Suspendisse potenti. Nullam a laoreet felis. Cras vel egestas purus, sed hendrerit massa. Sed mollis velit ac sem lacinia, nec tempus massa mattis. Sed euismod est ac nulla ultricies, in auctor eros pretium. Nullam mattis vel elit eget dictum. Integer venenatis eget purus sed luctus. Sed non turpis elit. Pellentesque sit amet lectus hendrerit, ullamcorper eros ac, fermentum leo.",
-      file: { fileName: "lab1.docx", url: "" },
-    },
-    {
-      title: "Лабораторная работа №1",
-      date: "15.11.2022 21:07",
-      author: "Романов Данила Юрьевич",
-      course: "1",
-      group: "15.27Д-ПИ06/22б",
-      subject: "Информационные системы и технологии",
-      theme: "Установка программного средства QGIS",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet diam at nulla lobortis pulvinar. Donec porta, sem quis aliquet pretium, neque ligula fringilla magna, non mattis massa orci nec nulla. Ut aliquet porta nunc ac accumsan. Suspendisse potenti. Nullam a laoreet felis. Cras vel egestas purus, sed hendrerit massa. Sed mollis velit ac sem lacinia, nec tempus massa mattis. Sed euismod est ac nulla ultricies, in auctor eros pretium. Nullam mattis vel elit eget dictum. Integer venenatis eget purus sed luctus. Sed non turpis elit. Pellentesque sit amet lectus hendrerit, ullamcorper eros ac, fermentum leo.",
-      file: { fileName: "lab1.docx", url: "" },
-    },
-    {
-      title: "Лабораторная работа №1",
-      date: "15.11.2022 21:07",
-      author: "Романов Данила Юрьевич",
-      course: "1",
-      group: "15.27Д-ПИ06/22б",
-      subject: "Информационные системы и технологии",
-      theme: "Установка программного средства QGIS",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet diam at nulla lobortis pulvinar. Donec porta, sem quis aliquet pretium, neque ligula fringilla magna, non mattis massa orci nec nulla. Ut aliquet porta nunc ac accumsan. Suspendisse potenti. Nullam a laoreet felis. Cras vel egestas purus, sed hendrerit massa. Sed mollis velit ac sem lacinia, nec tempus massa mattis. Sed euismod est ac nulla ultricies, in auctor eros pretium. Nullam mattis vel elit eget dictum. Integer venenatis eget purus sed luctus. Sed non turpis elit. Pellentesque sit amet lectus hendrerit, ullamcorper eros ac, fermentum leo.",
-      file: { fileName: "lab1.docx", url: "" },
-    },
-  ],
+  referats: [],
 });
+
+const handleForm = (el) => {
+  data.value.referats.push(el);
+};
 </script>
 
 <style lang="scss" scoped>

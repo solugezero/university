@@ -12,15 +12,18 @@
       <p class="work-form_wrapper__item">Группа: {{ props.options.group }}</p>
       <p class="work-form_wrapper__item">Курс: {{ props.options.course }}</p>
       <p class="work-form_wrapper__item">Описание: {{ props.options.description }}</p>
-      <div class="work-form_wrapper__item_file-wrapper">
+      <div class="work-form_wrapper__item_file-wrapper" @click="downloadFile">
         <img class="work-form_wrapper__item_file-wrapper__icon" src="@/assets/imgs/fileicon.png" alt="" />
-        <p class="work-form_wrapper__item_file-wrapper__file-name">{{ props.options.file.fileName }}</p>
+        <p class="work-form_wrapper__item_file-wrapper__file-name">
+          <a :href="`http://localhost:8000/file/${props.options.filename}`">{{ props.options.filename }}</a>
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+const router = useRouter();
 const props = defineProps({
   options: {
     type: Object,
@@ -35,10 +38,15 @@ const props = defineProps({
       type: "lab",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet diam at nulla lobortis pulvinar. Donec porta, sem quis aliquet pretium, neque ligula fringilla magna, non mattis massa orci nec nulla. Ut aliquet porta nunc ac accumsan. Suspendisse potenti. Nullam a laoreet felis. Cras vel egestas purus, sed hendrerit massa. Sed mollis velit ac sem lacinia, nec tempus massa mattis. Sed euismod est ac nulla ultricies, in auctor eros pretium. Nullam mattis vel elit eget dictum. Integer venenatis eget purus sed luctus. Sed non turpis elit. Pellentesque sit amet lectus hendrerit, ullamcorper eros ac, fermentum leo.",
-      file: { fileName: "lab1.docx", url: "" },
+      filename: "123",
     },
   },
 });
+
+const downloadFile = () => {
+  const { filename } = props.options;
+  router.go(`http://localhost:8000/file/${filename}`);
+};
 </script>
 
 <style scoped lang="scss">
@@ -93,6 +101,11 @@ const props = defineProps({
         align-items: center;
         &__file-name {
           color: #000;
+
+          a {
+            text-decoration: none;
+            color: #000;
+          }
         }
       }
     }

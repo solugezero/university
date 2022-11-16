@@ -19,9 +19,13 @@
           <ui-input textarea v-model="stateInput.description" title="Описание" height="300px"></ui-input>
           <ui-select v-model="stateInput.type" style="max-width: 50%"></ui-select>
         </div>
+
         <div class="create-form_inner_bottom">
-          <FileUpload name="demo[]" :customUpload="true" @uploader="myUploader" />
-          <ui-button @click="handleSend">Добавить</ui-button>
+          <!-- <FileUpload name="demo[]" :customUpload="true" @uploader="myUploader" /> -->
+          <form enctype="multipart/form-data" ref="form">
+            <input @change="(e) => getFileName(e)" type="file" name="filedata" />
+          </form>
+          <ui-button @click="handleSend">Ота</ui-button>
         </div>
       </div>
     </div>
@@ -32,23 +36,32 @@
 
 <script setup>
 import { onClickOutside } from "@vueuse/core";
+const emit = defineEmits("add");
 let isActive = ref(false);
 let formInner = ref(null);
+let form = ref();
 let stateInput = ref({});
+stateInput.value["uploads"] = [];
 const toggleActive = () => {
   isActive.value = !isActive.value;
 };
 onClickOutside(formInner, () => (isActive.value = false));
-
-const myUploader = (event) => {
-  stateInput.value["uploads"] = event;
+const getFileName = (e) => {
+  stateInput.value["filename"] = e.target.files[0].name;
 };
 const handleSend = () => {
-  let date = new Date();
-  // send to backend
+  const formData = new FormData(form.value);
+  formData.append("naming", Date.now());
+  const date = new Date();
   stateInput.value["date"] = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
-  console.log(stateInput.value);
-  stateInput.value = {};
+
+  fetch("http://localhost:8000/upload", {
+    method: "POST",
+    body: formData,
+  });
+
+  emit("add", stateInput.value);
+  isActive.value = false;
 };
 </script>
 
