@@ -3,7 +3,7 @@
     <div class="content-box">
       <OrganismsCreateForm @add="(el) => handleForm(el)">
         <template v-slot:activeButton>
-          <ui-button>Добавить работу</ui-button>
+          <ui-button class="btn">Добавить работу</ui-button>
         </template>
       </OrganismsCreateForm>
       <div class="referats_wrapper">
@@ -62,5 +62,9 @@ const { data: fetchData } = await useFetch("http://localhost:3000/all");
       color: #000;
     }
   }
+}
+
+.btn {
+  width: 250px;
 }
 </style>

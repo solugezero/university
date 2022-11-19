@@ -23,7 +23,7 @@
         <div class="create-form_inner_bottom">
           <!-- <FileUpload name="demo[]" :customUpload="true" @uploader="myUploader" /> -->
           <form enctype="multipart/form-data" ref="form">
-            <input @change="(e) => getFileName(e)" type="file" name="filedata" />
+            <input @change="(el) => getFileName(el)" type="file" name="filedata" />
           </form>
           <ui-button @click="handleSend">Ота</ui-button>
         </div>
@@ -41,13 +41,12 @@ let isActive = ref(false);
 let formInner = ref(null);
 let form = ref();
 let stateInput = ref({});
-stateInput.value["uploads"] = [];
 const toggleActive = () => {
   isActive.value = !isActive.value;
 };
 onClickOutside(formInner, () => (isActive.value = false));
-const getFileName = (e) => {
-  stateInput.value["filename"] = e.target.files[0].name;
+const getFileName = (el) => {
+  stateInput.value["filetitle"] = el.target.files[0].name;
 };
 const handleSend = () => {
   const formData = new FormData(form.value);
@@ -60,6 +59,7 @@ const handleSend = () => {
   formData.append("course", stateInput.value.course);
   formData.append("description", stateInput.value.description);
   formData.append("type", stateInput.value.type.id);
+  formData.append("filetitle", stateInput.value.filetitle);
   const date = new Date();
   stateInput.value["date"] = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
   console.log(stateInput.value);
@@ -88,7 +88,11 @@ const handleSend = () => {
   width: 100vw;
   height: 100vh;
   background: rgba(85, 85, 85, 0.242);
+  z-index: 1000;
 
+  &_activeSlot {
+    width: min-content;
+  }
   &_inner {
     // border-radius: 12px;
     padding: 30px;

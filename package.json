@@ -20,6 +20,7 @@
     "primeicons": "^6.0.1",
     "primevue": "^3.18.1",
     "scss": "^0.2.4",
-    "scss-loader": "^0.0.1"
+    "scss-loader": "^0.0.1",
+    "vuetify": "^2.6.12"
   }
 }

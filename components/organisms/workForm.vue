@@ -1,21 +1,20 @@
 <template>
   <div class="work-form">
     <div class="work-form_top">
-      <p class="work-form_top__title">{{ props.options.title }}</p>
-      <p class="work-form_top__date">Дата публикации: {{ props.options.date }}</p>
+      <p class="work-form_top__title">{{ options.title }}</p>
+      <p class="work-form_top__date">Дата публикации: {{ options.date }}</p>
     </div>
-
     <div class="work-form_wrapper">
-      <p class="work-form_wrapper__item">Автор: {{ props.options.author }}</p>
-      <p class="work-form_wrapper__item">Тема: {{ props.options.theme }}</p>
-      <p class="work-form_wrapper__item">Предмет: {{ props.options.subject }}</p>
-      <p class="work-form_wrapper__item">Группа: {{ props.options.group }}</p>
-      <p class="work-form_wrapper__item">Курс: {{ props.options.course }}</p>
-      <p class="work-form_wrapper__item">Описание: {{ props.options.description }}</p>
+      <div class="work-form_wrapper__item">Автор: {{ options.author }}</div>
+      <div class="work-form_wrapper__item">Тема: {{ options.theme }}</div>
+      <div class="work-form_wrapper__item">Предмет: {{ options.subject }}</div>
+      <div class="work-form_wrapper__item">Группа: {{ options.group }}</div>
+      <div class="work-form_wrapper__item">Курс: {{ options.course }}</div>
+      <span class="work-form_wrapper__item">Описание: {{ options.description }}</span>
       <div class="work-form_wrapper__item_file-wrapper" @click="downloadFile">
         <img class="work-form_wrapper__item_file-wrapper__icon" src="@/assets/imgs/fileicon.png" alt="" />
-        <p class="work-form_wrapper__item_file-wrapper__file-name">
-          <a :href="`http://localhost:8000/file/${props.options.filename}`">{{ props.options.filename }}</a>
+        <p class="work-form_wrapper__item_file-wrapper__file-name" @click="downloadFile()">
+          <a :href="`http://localhost:3000/download/${options.fileid}.${options.filetitle.split('.').reverse()[0]}`">{{ options.filetitle }}</a>
         </p>
       </div>
     </div>
@@ -44,8 +43,9 @@ const props = defineProps({
 });
 
 const downloadFile = () => {
-  const { filename } = props.options;
-  router.go(`http://localhost:8000/file/${filename}`);
+  const { filetitle, fileid } = props.options;
+  let ext = filetitle.split(".").reverse()[0];
+  return `http://localhost:3000/download/${fileid}.${ext}`;
 };
 </script>
 
@@ -84,13 +84,19 @@ const downloadFile = () => {
     border-radius: 10px;
     display: flex;
     width: 100%;
+    max-width: 100vw;
     height: auto;
     padding: 13px;
     flex-direction: column;
     gap: 11px;
+    flex-wrap: wrap;
+    position: relative;
 
     &__item {
+      display: flex;
       color: #000;
+      flex-wrap: wrap;
+      word-break: break-all;
 
       &_file-wrapper {
         display: flex;
@@ -110,5 +116,12 @@ const downloadFile = () => {
       }
     }
   }
+}
+
+.desc {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  max-width: 100%;
 }
 </style>
