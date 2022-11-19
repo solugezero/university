@@ -9,7 +9,7 @@
       <div class="referats_wrapper">
         <p class="referats_wrapper__title">Список лабораторных работ</p>
         <div class="referats_wrapper_list">
-          <OrganismsWorkForm :key="`referats_wrapper_list-${index}`" v-for="(item, index) in data.referats" :options="item"></OrganismsWorkForm>
+          <OrganismsWorkForm :key="`referats_wrapper_list-${index}`" v-for="(item, index) in fetchData" :options="item"></OrganismsWorkForm>
         </div>
       </div>
     </div>
@@ -24,6 +24,8 @@ let data = ref({
 const handleForm = (el) => {
   data.value.referats.push(el);
 };
+
+const { data: fetchData } = await useFetch("http://localhost:3000/all");
 </script>
 
 <style lang="scss" scoped>

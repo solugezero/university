@@ -51,11 +51,21 @@ const getFileName = (e) => {
 };
 const handleSend = () => {
   const formData = new FormData(form.value);
-  formData.append("naming", Date.now());
+  formData.append("createdDate", Date.now());
+  formData.append("title", stateInput.value.title);
+  formData.append("author", stateInput.value.author);
+  formData.append("subject", stateInput.value.subject);
+  formData.append("theme", stateInput.value.theme);
+  formData.append("group", stateInput.value.group);
+  formData.append("course", stateInput.value.course);
+  formData.append("description", stateInput.value.description);
+  formData.append("type", stateInput.value.type.id);
   const date = new Date();
   stateInput.value["date"] = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+  console.log(stateInput.value);
+  // formData.append("naming", Date.now());
 
-  fetch("http://localhost:8000/upload", {
+  fetch("http://localhost:3000/createpost", {
     method: "POST",
     body: formData,
   });
