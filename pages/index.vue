@@ -1,17 +1,18 @@
 <template>
-  <div class="main-page"></div>
+  <div class="main-page content-box">
+    <OrganismsCreateForm>
+      <template v-slot:activeButton>
+        <v-btn>Добавить работу</v-btn>
+      </template>
+    </OrganismsCreateForm>
+    <div style="margin-top: 20px">
+      <OrganismsWorkForm :key="`referats_wrapper_list-${index}`" v-for="(item, index) in fetchData" :options="item"></OrganismsWorkForm>
+    </div>
+  </div>
 </template>
 
 <script setup>
-const fetchAllData = async () => {
-  const data = await fetch("http://localhost:3000/all", {
-    method: "GET",
-  });
-  return data;
-};
-onMounted(() => {
-  console.log(fetchAllData());
-});
+const { data: fetchData } = await useFetch("http://localhost:3000/all");
 </script>
 
 <style scoped lang="scss"></style>

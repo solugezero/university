@@ -1,48 +1,40 @@
 <template>
-  <div class="header">
-    <div class="header-wrapper content-box">
-      <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" class="header-wrapper__logo" /></NuxtLink>
-      <div class="header-wrapper_buttons">
-        <NuxtLink to="/referats"><ui-button>Рефераты</ui-button></NuxtLink>
-        <NuxtLink to="/lab"><ui-button>Лабораторные работы</ui-button></NuxtLink>
-        <NuxtLink to="/presentation"><ui-button>Презентации</ui-button></NuxtLink>
-        <NuxtLink to="/course"><ui-button>Курсы</ui-button></NuxtLink>
-      </div>
-    </div>
+  <div>
+    <v-app-bar color="#0B2D50" dense dark>
+      <v-app-bar-nav-icon
+        ><NuxtLink to="/"><img src="@/assets/imgs/logo.png" style="width: 40px; height: 40px" alt="" /></NuxtLink
+      ></v-app-bar-nav-icon>
+
+      <v-toolbar-title><p style="color: #fff">РЭУ</p></v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn elevation="2"
+        ><NuxtLink to="/lab"><p style="color: #fff">Лабараторные работы</p></NuxtLink></v-btn
+      >
+      <v-btn elevation="2"
+        ><NuxtLink to="/referats"><p style="color: #fff">Рефераты</p></NuxtLink></v-btn
+      >
+      <v-btn elevation="2"
+        ><NuxtLink to="/course"><p style="color: #fff">Курсовые работы</p></NuxtLink></v-btn
+      >
+      <v-btn elevation="2"
+        ><NuxtLink to="/presentation"><p style="color: #fff">Презентации</p></NuxtLink></v-btn
+      >
+
+      <!-- <v-menu left bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn icon v-bind="attrs" v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
+            <v-list-item-title>Option {{ n }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu> -->
+    </v-app-bar>
   </div>
 </template>
-
-<script setup></script>
-
-<style scoped lang="scss">
-.header {
-  width: 100%;
-  height: 80px;
-  display: flex;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-
-  &-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-
-    &__logo {
-      width: 40px;
-      height: 40px;
-    }
-
-    &_buttons {
-      display: flex;
-      width: auto;
-      height: auto;
-      flex-direction: row;
-      gap: 10px;
-    }
-  }
-}
-</style>

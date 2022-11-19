@@ -1,20 +1,20 @@
 <template>
   <div class="work-form">
     <div class="work-form_top">
-      <p class="work-form_top__title">{{ options.title }}</p>
+      <p class="work-form_top__title">{{ options?.title }}</p>
       <p class="work-form_top__date">Дата публикации: {{ options.date }}</p>
     </div>
     <div class="work-form_wrapper">
-      <div class="work-form_wrapper__item">Автор: {{ options.author }}</div>
-      <div class="work-form_wrapper__item">Тема: {{ options.theme }}</div>
-      <div class="work-form_wrapper__item">Предмет: {{ options.subject }}</div>
-      <div class="work-form_wrapper__item">Группа: {{ options.group }}</div>
-      <div class="work-form_wrapper__item">Курс: {{ options.course }}</div>
-      <span class="work-form_wrapper__item">Описание: {{ options.description }}</span>
+      <div class="work-form_wrapper__item">Автор: {{ options?.author }}</div>
+      <div class="work-form_wrapper__item">Тема: {{ options?.theme }}</div>
+      <div class="work-form_wrapper__item">Предмет: {{ options?.subject }}</div>
+      <div class="work-form_wrapper__item">Группа: {{ options?.group }}</div>
+      <div class="work-form_wrapper__item">Курс: {{ options?.course }}</div>
+      <span class="work-form_wrapper__item">Описание: {{ options?.description }}</span>
       <div class="work-form_wrapper__item_file-wrapper" @click="downloadFile">
         <img class="work-form_wrapper__item_file-wrapper__icon" src="@/assets/imgs/fileicon.png" alt="" />
         <p class="work-form_wrapper__item_file-wrapper__file-name" @click="downloadFile()">
-          <a :href="`http://localhost:3000/download/${options.fileid}.${options.filetitle.split('.').reverse()[0]}`">{{ options.filetitle }}</a>
+          <!-- <a :href="`http://localhost:3000/download/${options.fileid}.${options?.filetitle.split('.').reverse()[0]}`">{{ options?.filetitle }}</a> -->
         </p>
       </div>
     </div>
@@ -79,8 +79,8 @@ const downloadFile = () => {
   }
 
   &_wrapper {
-    background: #d9d9d9;
-    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.25);
+    background: #ffffff;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     display: flex;
     width: 100%;

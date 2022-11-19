@@ -1,58 +1,18 @@
 <template>
-<div class="referats">
-    <div class="content-box">
-        <OrganismsCreateForm>
-            <template v-slot:activeButton>
-                <ui-button>Добавить работу</ui-button>
-            </template>
-        </OrganismsCreateForm>
-        <div class="referats_wrapper">
-          <p class="referats_wrapper__title">Список рефератов</p>
-          <div class="referats_wrapper_list">
-          </div>
-        </div>
+  <div class="referats-page content-box">
+    <OrganismsCreateForm>
+      <template v-slot:activeButton>
+        <v-btn>Добавить работу</v-btn>
+      </template>
+    </OrganismsCreateForm>
+    <div style="margin-top: 20px">
+      <OrganismsWorkForm :key="`referats_wrapper_list-${index}`" v-for="(item, index) in fetchData" :options="item"></OrganismsWorkForm>
     </div>
-</div>
+  </div>
 </template>
 
-  
 <script setup>
-let data = ref({
-  referats: [
-    {
-      author: '',
-      description: '',
-      datePublication: ''
-    }
-  ]
-})
+const { data: fetchData } = await useFetch("http://localhost:3000/all/637670dd9960d925c73d0bf3");
 </script>
 
-  
-<style scoped lang="scss">
-.referats {
-  display: flex;
-  width: 100%;
-  height: auto;
-  // background: rgba(255, 0, 0, 0.281);
-  flex-direction: column;
-  .content-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  &_wrapper {
-    display: flex;
-    width: 100%;
-    height: 300px;
-    // background: rgba(0, 128, 0, 0.418);
-
-    &__title {
-      font-size: 20px;
-      font-weight: 700;
-      color: #000;
-    }
-  }
-}
-</style>
+<style scoped lang="scss"></style>

@@ -126,6 +126,7 @@ const handleSend = () => {
       &__title {
         font-size: 20px;
         font-weight: 700;
+        color: #fff;
       }
 
       &__close-btn {

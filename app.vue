@@ -1,8 +1,10 @@
 <template>
-  <NuxtLayout>
-    <OrganismsHeader></OrganismsHeader>
-    <NuxtPage />
-  </NuxtLayout>
+  <v-app>
+    <NuxtLayout>
+      <OrganismsHeader></OrganismsHeader>
+      <NuxtPage />
+    </NuxtLayout>
+  </v-app>
 </template>
 
 <style lang="scss">
