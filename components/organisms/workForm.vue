@@ -14,7 +14,7 @@
       <div class="work-form_wrapper__item_file-wrapper" @click="downloadFile">
         <img class="work-form_wrapper__item_file-wrapper__icon" src="@/assets/imgs/fileicon.png" alt="" />
         <p class="work-form_wrapper__item_file-wrapper__file-name" @click="downloadFile()">
-          <!-- <a :href="`http://localhost:3000/download/${options.fileid}.${options?.filetitle.split('.').reverse()[0]}`">{{ options?.filetitle }}</a> -->
+          <a :href="`http://localhost:3000/download/${options.fileid}.${options?.filetitle.split('.').reverse()[0]}`">{{ options?.filetitle }}</a>
         </p>
       </div>
     </div>
