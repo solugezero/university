@@ -2,12 +2,26 @@
   <v-app>
     <NuxtLayout>
       <OrganismsHeader></OrganismsHeader>
-      <NuxtPage />
+      <div class="app">
+        <NuxtPage />
+      </div>
+      <OrganismsFooter></OrganismsFooter>
     </NuxtLayout>
   </v-app>
 </template>
 
 <style lang="scss">
+.app {
+  margin-top: 20px;
+  margin-bottom: 100px;
+
+  @media (max-width: 1024px) {
+    margin-bottom: 90px;
+  }
+  @media (max-width: 425px) {
+    margin-bottom: 80px;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -32,13 +46,11 @@ a {
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(128, 128, 128, 0.329);
-  border-radius: 10px;
 }
 
 /* Handle on hover */

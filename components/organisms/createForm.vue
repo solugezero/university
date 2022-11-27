@@ -17,7 +17,7 @@
           <ui-input v-model="stateInput.group" title="Группа"></ui-input>
           <ui-input v-model="stateInput.course" title="Курс"></ui-input>
           <ui-input textarea v-model="stateInput.description" title="Описание" height="300px"></ui-input>
-          <ui-select v-model="stateInput.type" style="max-width: 50%"></ui-select>
+          <ui-select v-model="stateInput.type" class="select"></ui-select>
         </div>
 
         <div class="create-form_inner_bottom">
@@ -25,7 +25,8 @@
           <form enctype="multipart/form-data" ref="form">
             <input @change="(el) => getFileName(el)" type="file" name="filedata" />
           </form>
-          <ui-button @click="handleSend">Ота</ui-button>
+          <!-- <ui-button @click="handleSend">Ота</ui-button> -->
+          <v-btn @click="handleSend">Добавить запись</v-btn>
         </div>
       </div>
     </div>
@@ -87,7 +88,7 @@ const handleSend = () => {
   right: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(85, 85, 85, 0.242);
+  background: rgba(68, 68, 68, 0.548);
   z-index: 1000;
 
   &_activeSlot {
@@ -99,20 +100,24 @@ const handleSend = () => {
     display: flex;
     width: 80%;
     height: 80%;
-    background: rgba(182, 182, 182, 0.452);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(3px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
     flex-direction: column;
     gap: 30px;
     overflow: auto;
+    background: rgb(219, 219, 219);
+
+    @media (max-width: 1024px) {
+      width: 100%;
+      height: 100vh;
+    }
 
     &_content {
       display: flex;
       flex-direction: column;
       gap: 50px;
+
+      * {
+        color: #000;
+      }
     }
 
     &_top {
@@ -126,7 +131,7 @@ const handleSend = () => {
       &__title {
         font-size: 20px;
         font-weight: 700;
-        color: #fff;
+        color: #000;
       }
 
       &__close-btn {
@@ -144,6 +149,16 @@ const handleSend = () => {
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-end;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+
+        * {
+          width: 100%;
+        }
+      }
     }
   }
 }

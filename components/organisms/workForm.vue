@@ -70,11 +70,32 @@ const downloadFile = () => {
       color: #000;
     }
 
+    &__date {
+      width: 50%;
+      text-align: end;
+      font-size: 16px;
+      @media (max-width: 1024px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 425px) {
+        font-size: 12px;
+      }
+    }
+
     &__title {
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
       line-height: 24px;
+
+      @media (max-width: 1024px) {
+        font-size: 18px;
+      }
+
+      @media (max-width: 425px) {
+        font-size: 16px;
+      }
     }
   }
 
@@ -97,6 +118,15 @@ const downloadFile = () => {
       color: #000;
       flex-wrap: wrap;
       word-break: break-all;
+      font-size: 16px;
+
+      @media (max-width: 1024px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 425px) {
+        font-size: 12px;
+      }
 
       &_file-wrapper {
         display: flex;

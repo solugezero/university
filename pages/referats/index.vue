@@ -5,7 +5,7 @@
         <v-btn>Добавить работу</v-btn>
       </template>
     </OrganismsCreateForm>
-    <div style="margin-top: 20px; display: flex; gap: 10px; flex-direction: column">
+    <div style="margin-top: 20px; display: flex; gap: 20px; flex-direction: column">
       <OrganismsWorkForm :key="`referats_wrapper_list-${index}`" v-for="(item, index) in fetchData" :options="item"></OrganismsWorkForm>
     </div>
   </div>

@@ -51,7 +51,7 @@ const getActiveStyle = computed(() => {
   position: relative;
 
   &__title {
-    color: #fff;
+    color: #000;
     font-size: 16px;
     font-weight: 700;
   }

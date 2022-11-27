@@ -1,40 +1,68 @@
 <template>
-  <div>
-    <v-app-bar color="#0B2D50" dense dark>
-      <v-app-bar-nav-icon
-        ><NuxtLink to="/"><img src="@/assets/imgs/logo.png" style="width: 40px; height: 40px" alt="" /></NuxtLink
-      ></v-app-bar-nav-icon>
-
-      <v-toolbar-title><p style="color: #fff">РЭУ</p></v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn elevation="2"
-        ><NuxtLink to="/lab"><p style="color: #fff">Лабараторные работы</p></NuxtLink></v-btn
-      >
-      <v-btn elevation="2"
-        ><NuxtLink to="/referats"><p style="color: #fff">Рефераты</p></NuxtLink></v-btn
-      >
-      <v-btn elevation="2"
-        ><NuxtLink to="/course"><p style="color: #fff">Курсовые работы</p></NuxtLink></v-btn
-      >
-      <v-btn elevation="2"
-        ><NuxtLink to="/presentation"><p style="color: #fff">Презентации</p></NuxtLink></v-btn
-      >
-
-      <!-- <v-menu left bottom>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on">
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu> -->
-    </v-app-bar>
+  <div class="header">
+    <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" /></NuxtLink>
+    <div class="buttons">
+      <NuxtLink to="/lab"><v-btn>Лабараторные работы</v-btn></NuxtLink>
+      <NuxtLink to="/referats"><v-btn>Рефераты</v-btn></NuxtLink>
+      <NuxtLink to="/course"><v-btn>Курсовые работы</v-btn></NuxtLink>
+      <NuxtLink to="/presentation"><v-btn>Перезентации</v-btn></NuxtLink>
+    </div>
+    <MoleculesMobileHeaderMenu class="mobile-menu"></MoleculesMobileHeaderMenu>
   </div>
 </template>
+
+<script setup></script>
+
+<style lang="scss" scoped>
+.header {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  padding: 0px 40px;
+  background: #0b2d50;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    height: 60px;
+  }
+
+  @media (max-width: 425px) {
+    height: 50px;
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+
+    @media (max-width: 1024px) {
+      height: 50px;
+      width: 50px;
+    }
+
+    @media (max-width: 425px) {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.mobile-menu {
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: block;
+  }
+}
+</style>
