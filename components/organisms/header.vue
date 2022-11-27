@@ -1,6 +1,11 @@
 <template>
   <div class="header">
-    <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" /></NuxtLink>
+    <!-- <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" /></NuxtLink> -->
+    <div style="display: flex; flex-deriction: row; gap: 10px; align-items: center">
+      <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" /></NuxtLink>
+      <p style="color: #fff; font-weight: 700">ОАО "Усосок"</p>
+    </div>
+
     <div class="buttons">
       <NuxtLink to="/lab"><v-btn>Лабараторные работы</v-btn></NuxtLink>
       <NuxtLink to="/referats"><v-btn>Рефераты</v-btn></NuxtLink>
@@ -37,6 +42,7 @@
 
     @media (max-width: 1024px) {
       height: 50px;
+
       width: 50px;
     }
 
