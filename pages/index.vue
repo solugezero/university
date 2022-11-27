@@ -1,13 +1,6 @@
 <template>
   <div class="main-page content-box">
-    <OrganismsCreateForm>
-      <template v-slot:activeButton>
-        <v-btn>Добавить работу</v-btn>
-      </template>
-    </OrganismsCreateForm>
-    <div style="margin-top: 20px; display: flex; gap: 20px; flex-direction: column">
-      <OrganismsWorkForm :key="`referats_wrapper_list-${index}`" v-for="(item, index) in fetchData" :options="item"></OrganismsWorkForm>
-    </div>
+    <img src="@/assets/imgs/mainpage.jpg" alt="" />
   </div>
 </template>
 
@@ -15,4 +8,14 @@
 const { data: fetchData } = await useFetch("http://localhost:3000/all");
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 80vw;
+    height: 80vh;
+  }
+}
+</style>
