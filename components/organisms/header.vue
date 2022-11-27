@@ -2,15 +2,15 @@
   <div class="header">
     <!-- <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" /></NuxtLink> -->
     <div style="display: flex; flex-deriction: row; gap: 10px; align-items: center">
-      <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" /></NuxtLink>
+      <a href="/"><img src="@/assets/imgs/logo.png" alt="" /></a>
       <p style="color: #fff; font-weight: 700">ОАО "Усосок"</p>
     </div>
 
     <div class="buttons">
-      <NuxtLink to="/lab"><v-btn>Лабараторные работы</v-btn></NuxtLink>
-      <NuxtLink to="/referats"><v-btn>Рефераты</v-btn></NuxtLink>
-      <NuxtLink to="/course"><v-btn>Курсовые работы</v-btn></NuxtLink>
-      <NuxtLink to="/presentation"><v-btn>Перезентации</v-btn></NuxtLink>
+      <a href="/lab"><v-btn>Лабараторные работы</v-btn></a>
+      <a href="/referats"><v-btn>Рефераты</v-btn></a>
+      <a href="/course"><v-btn>Курсовые работы</v-btn></a>
+      <a href="/presentation"><v-btn>Перезентации</v-btn></a>
     </div>
     <MoleculesMobileHeaderMenu class="mobile-menu"></MoleculesMobileHeaderMenu>
   </div>
