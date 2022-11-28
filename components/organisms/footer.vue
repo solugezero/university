@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="content-box">
-      <img src="@/assets/imgs/telegram.png" alt="" />
+      <a href="https://t.me/weukali"><img src="@/assets/imgs/telegram.png" alt="" /></a>
     </div>
   </div>
 </template>
