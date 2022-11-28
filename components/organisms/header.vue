@@ -1,10 +1,6 @@
 <template>
   <div class="header">
-    <!-- <NuxtLink to="/"><img src="@/assets/imgs/logo.png" alt="" /></NuxtLink> -->
-    <div style="display: flex; flex-deriction: row; gap: 10px; align-items: center">
-      <a href="/"><img src="@/assets/imgs/logo.png" alt="" /></a>
-      <p style="color: #fff; font-weight: 700">ОАО "Усосок"</p>
-    </div>
+    <a href="/"><img src="@/assets/imgs/logo.png" alt="" /></a>
 
     <div class="buttons">
       <a href="/lab"><v-btn>Лабараторные работы</v-btn></a>

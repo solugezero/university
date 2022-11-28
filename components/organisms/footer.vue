@@ -1,8 +1,7 @@
 <template>
   <div class="footer">
     <div class="content-box">
-      <p>При неправильной работе сайта, обращайтесь в telegram - @weukali</p>
-      <p>© weukali 2022</p>
+      <img src="@/assets/imgs/telegram.png" alt="" />
     </div>
   </div>
 </template>
@@ -31,6 +30,16 @@
 
   .content-box {
     text-align: center;
+    img {
+      width: 50px;
+      height: 50px;
+
+      @media (max-width: 1024px) {
+        height: 30px;
+
+        width: 30px;
+      }
+    }
     p {
       color: #fff;
       font-size: 16px;
