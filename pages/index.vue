@@ -6,13 +6,14 @@
       </template>
     </OrganismsCreateForm>
     <div style="margin-top: 20px; display: flex; gap: 20px; flex-direction: column">
-      <OrganismsWorkForm :key="`referats_wrapper_list-${index}`" v-for="(item, index) in fetchData" :options="item"></OrganismsWorkForm>
+      <OrganismsWorkForm :key="`referats_wrapper_list-${index}`" v-for="(item, index) in data" :options="item"></OrganismsWorkForm>
     </div>
   </div>
 </template>
 
 <script setup>
 const { data: fetchData } = await useFetch("https://rococo-selkie-b34e78.netlify.app/.netlify/functions/get_all");
+let data = ref(JSON.parse(fetchData.value));
 </script>
 
 <style scoped lang="scss"></style>
