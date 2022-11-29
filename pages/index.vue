@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-const { data: fetchData } = await useFetch("http://localhost:3000/all");
+const { data: fetchData } = await useFetch("https://rococo-selkie-b34e78.netlify.app/.netlify/functions/get_all");
 </script>
 
 <style scoped lang="scss"></style>
